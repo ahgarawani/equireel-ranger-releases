@@ -6,20 +6,21 @@ Last verified: 2026-04-18
 
 # Manual Release Workflow Guide 🚀
 
-This document defines the standard procedure for publishing installer-based releases of Ranger from the private source repository to the public `equireel-ranger-releases` repository.
+This document defines the standard procedure for publishing installer-based releases of Ranger.
 
-## Prerequisites
-- Authenticated `git` and `gh` (GitHub CLI) access.
-- **Inno Setup** installed for building the installer.
-- A clean working directory in the `main` branch.
+## Repositories
+- **Private Source**: `Equireels-Ranger/` (Code, Build scripts)
+- **Public Releases**: `equireel-ranger-releases/` (Installer binaries, Metadata)
 
 ---
 
-## Step 1: Version Bumping
+## Phase A: Source Preparation (Private Source Repo)
+
+### Step 1: Version Bumping
 Before starting the release, update the version number in the following locations:
 1.  **`.specify/memory/constitution.md`**: Update the `Version` line and the `Release Roadmap`.
 2.  **`README.md`**: Ensure any version-specific installation notes are updated.
-3.  **`app/ranger.py`** (if version constant exists): Ensure the internal version matches.
+3.  **`app/ranger.py`**: Ensure the internal version matches (if applicable).
 
 Commit these changes:
 ```bash
@@ -27,18 +28,14 @@ git add .
 git commit -m "chore: bump version to vX.Y.Z"
 ```
 
----
-
-## Step 2: Tagging
+### Step 2: Tagging
 Create a signed git tag for the release:
 ```bash
 git tag -a vX.Y.Z -m "Ranger Release X.Y.Z"
 git push origin vX.Y.Z
 ```
 
----
-
-## Step 3: Building the Installer
+### Step 3: Building the Installer
 1.  **Compile**: Run the build script to generate the bundled application folder:
     ```cmd
     build.bat
@@ -49,28 +46,18 @@ git push origin vX.Y.Z
 
 ---
 
-## Step 4: Generating Checksums
+## Phase B: Distribution (Public Releases Repo)
+
+### Step 4: Generating Checksums
 Generate a SHA256 hash for the installer binary to ensure integrity:
 ```powershell
 # Windows PowerShell
 CertUtil -hashfile dist/Ranger-Setup.exe SHA256 > dist/Ranger-Setup.exe.sha256
 ```
-Clean up the checksum file to contain *only* the hex hash.
 
----
-
-## Step 5: Updating Release Metadata (Public Repo)
+### Step 5: Updating Release Metadata
 1.  Navigate to the cloned public repository: `cd ../equireel-ranger-releases`.
-2.  **Manifest**: Update `manifest.json` with the new release details:
-    ```json
-    {
-      "version": "X.Y.Z",
-      "installer_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/download/vX.Y.Z/Ranger-Setup.exe",
-      "sha256": "NEW_HASH_HERE",
-      "release_notes_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/tag/vX.Y.Z",
-      "minimum_supported_version": "1.0.0"
-    }
-    ```
+2.  **Manifest**: Update `manifest.json` with the new release details.
 3.  **Checksum File**: Copy the new `.sha256` file to the `checksums/` directory.
 4.  **Push Metadata**:
     ```bash
@@ -79,10 +66,8 @@ Clean up the checksum file to contain *only* the hex hash.
     git push origin main
     ```
 
----
-
-## Step 6: Creating the GitHub Release
-Create the release on the public repository and upload the installer:
+### Step 6: Creating the GitHub Release
+Create the release on the public repository and upload the installer using the GitHub CLI:
 ```bash
 gh release create vX.Y.Z ../Equireels-Ranger/dist/Ranger-Setup.exe \
     --repo ahgarawani/equireel-ranger-releases \
