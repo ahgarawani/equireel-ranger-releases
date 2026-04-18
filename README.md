@@ -1,20 +1,21 @@
 # Equireel-Ranger-Releases 📦
 
+This repository is the official distribution point for **Equireel's Ranger**, hosting public release artifacts and update metadata only. 
+
 > [!CAUTION]
-> **INTERNAL USE ONLY.** This repository is a private utility for Equireel. It is not intended for public use, and it will not function without specific internal credentials and infrastructure. No support or warranty is provided.
+> **INTERNAL USE ONLY.** While this repository is public for distribution accessibility, Ranger is a private utility for authorized Equireel personnel. It will not function without internal credentials and infrastructure.
 
 ## 🚀 Purpose
-This repository hosts distribution artifacts and metadata for **Equireel's Ranger** client updates. It is used exclusively by our internal update module.
+- **Release Assets**: Hosting `Ranger-Setup.exe` installers.
+- **Update Metadata**: Providing `manifest.json` for the client's pull-based auto-updater.
+- **Integrity**: Hosting SHA256 checksums in the `checksums/` directory.
 
-## 🛠️ Deployment Structure
-Ranger is distributed as a bundled application folder via an installer.
-1. Target machines must be authorized Equireel workstations.
-2. The application requires internal `config.json` and `credentials.json` to function.
+## 🛠️ Deployment
+Ranger is delivered as an installer-managed folder of bundled runtime files. Target systems do NOT require a pre-installed Python runtime.
 
 ## 🔐 Security & License
 - **License**: Proprietary. All Rights Reserved.
-- **Unauthorized use, modification, or distribution is strictly prohibited.**
-- The source code remains in a private repository.
+- **Source Code**: Remains in a private repository; not present here.
 
 ---
 **Ranger** - _Internal Asset Tracking Utility_
