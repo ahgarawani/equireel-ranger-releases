@@ -1,21 +1,25 @@
-# Equireel-Ranger-Releases 📦
+# Equireel-Ranger-Releases
 
-This repository is the official distribution point for **Equireel's Ranger**, hosting public release artifacts and update metadata only. 
+Public distribution repository for Ranger release assets and update metadata.
 
 > [!CAUTION]
-> **INTERNAL USE ONLY.** While this repository is public for distribution accessibility, Ranger is a private utility for authorized Equireel personnel. It will not function without internal credentials and infrastructure.
+> This repository is public for update delivery only. Ranger source code remains private.
 
-## 🚀 Purpose
-- **Release Assets**: Hosting `Ranger-Setup.exe` installers.
-- **Update Metadata**: Providing `manifest.json` for the client's pull-based auto-updater.
-- **Integrity**: Hosting SHA256 checksums in the `checksums/` directory.
+## Purpose
+- Host installer release assets (`Ranger-Setup.exe`)
+- Publish updater metadata (`manifest.json` at repository root)
+- Publish installer checksums (`checksums/Ranger-Setup.exe.sha256`)
 
-## 🛠️ Deployment
-Ranger is delivered as an installer-managed folder of bundled runtime files. Target systems do NOT require a pre-installed Python runtime.
+## Contract by Example
+- Release tag: `v2.1.1`
+- Release title: `Ranger 2.1.1`
+- Release asset: `Ranger-Setup.exe`
+- Manifest URL: `https://raw.githubusercontent.com/ahgarawani/equireel-ranger-releases/main/manifest.json`
+- Installer URL in manifest: `https://github.com/ahgarawani/equireel-ranger-releases/releases/download/v2.1.1/Ranger-Setup.exe`
 
-## 🔐 Security & License
-- **License**: Proprietary. All Rights Reserved.
-- **Source Code**: Remains in a private repository; not present here.
+## Repository Scope
+- Allowed: release metadata, installer checksum files, release-process docs
+- Not allowed: application source code or private credentials
 
----
-**Ranger** - _Internal Asset Tracking Utility_
+## License
+Proprietary. All rights reserved.
