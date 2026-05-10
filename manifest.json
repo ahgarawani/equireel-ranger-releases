@@ -1,7 +1,7 @@
 {
-  "version": "2.1.7",
-  "installer_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/download/v2.1.7/Ranger-Setup.exe",
-  "sha256": "7f5e837b3b6ae1abf4dc47f9ef9329d861f4309e802c821e553cc283fa40ee11",
+  "version": "2.1.8",
+  "installer_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/download/v2.1.8/Ranger-Setup.exe",
+  "sha256": "2a52ad6c9923d01038ed8f4738663fa9112c30cf1d3e3a504ca8309a795ec126",
   "min_version": "2.1.0",
-  "release_notes_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/tag/v2.1.7"
+  "release_notes_url": "https://github.com/ahgarawani/equireel-ranger-releases/releases/tag/v2.1.8"
 }
